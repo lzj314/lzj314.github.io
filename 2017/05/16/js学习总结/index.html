@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/16/js学习总结/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="变量1var a = 10;  var a 变量的声明;a=10变量的赋值（初始化）;命名规范：只能以数字，字符下划线及$符号组成；不能以数字开头，采用驼峰命名法。 类型分为数值类型；字符串类型；布尔类型；对象类型（包括null）；未定义(undefined)。 运算符 1.算术运算符 +，-，*，/，% （优先级先乘除取余；后加减） 2.关系运算符 &amp;gt;，&amp;lt;，==，!=等   注：不能">
-<meta property="og:updated_time" content="2017-05-23T07:13:20.128Z">
+<meta property="og:updated_time" content="2017-05-23T07:15:47.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js学习总结">
 <meta name="twitter:description" content="变量1var a = 10;  var a 变量的声明;a=10变量的赋值（初始化）;命名规范：只能以数字，字符下划线及$符号组成；不能以数字开头，采用驼峰命名法。 类型分为数值类型；字符串类型；布尔类型；对象类型（包括null）；未定义(undefined)。 运算符 1.算术运算符 +，-，*，/，% （优先级先乘除取余；后加减） 2.关系运算符 &amp;gt;，&amp;lt;，==，!=等   注：不能">
@@ -340,10 +340,11 @@
 <p>注：break和continue的区别<br>break中断该循环；continue中断本次循环继续下次循环。</p>
 </blockquote>
 <h4 id="的认识"><a href="#的认识" class="headerlink" title="++的认识"></a>++的认识</h4><p>a++：先执行代码执行结束后a+1；<br>++a：执行代码前a就+1；</p>
-<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>函数：就是一堆代码的集合用来说明某一个功能；<br>函数使用 1.定义函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//函数声明</div><div class="line"> function sum() &#123;</div><div class="line">        alert(&apos;我是一个sum函数&apos;);</div><div class="line">    &#125;</div><div class="line">//函数表达式</div><div class="line"> var fn=function()&#123;</div><div class="line">	 alert(&apos;我是一个sum函数&apos;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>函数：就是一堆代码的集合用来说明某一个功能；<br>函数使用 1.定义函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//函数声明</div><div class="line"> function sum() &#123;</div><div class="line">        alert(&apos;我是一个sum函数&apos;);</div><div class="line">    &#125;</div><div class="line">//函数表达式</div><div class="line"> var fn=function()&#123;</div><div class="line">	 alert(&apos;我是一个sum函数&apos;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>2.调用函数：<br>sum();</p>
 <h4 id="函数的参数和返回值"><a href="#函数的参数和返回值" class="headerlink" title="函数的参数和返回值"></a>函数的参数和返回值</h4><p>函数的参数：根据实际需求可能在函数中使用的变量<br>函数参数类型：形式参数简称形参：在函数定义的时候放在小括号中的变量就是形式参数<br>实际参数：简称实参：就是在函数调用的时候传入的实际的值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>) </span>&#123;<span class="comment">//a，b是形式参数，可以是任何值</span></div><div class="line">        alert(a + b);</div><div class="line">	<span class="keyword">return</span> a+b;</div><div class="line">    &#125;</div><div class="line">sum(<span class="number">1</span>,<span class="number">2</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function sum(a,b) &#123;//a，b是形式参数，可以是任何值</div><div class="line">        alert(a + b);</div><div class="line">	return a+b;</div><div class="line">    &#125;</div><div class="line">sum(1,2);</div></pre></td></tr></table></figure>
 <p>使用return可以把函数的值返回，如果没有return值默认是undefined;在函数中如果使用了return,会直接结束函数，rerun后面的代码都不会执行。</p>
 <blockquote>
 <p>注：函数实参可以和形参不一样，而且可以返回对应的结果，如果实参大于形参，会把对应的多出的参数去掉，显示最终的结果。</p>
