@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="ES6 语法ECMA是语法标准 let:let定义变量 代码块 也就是{} 加个块级作用域；1.具备块级作用域 其实就是立即执行函数调用2.不能覆盖声明3.解决i问题 const—用来定义常量 1.一旦赋值不能修改；2.const必须赋初始值，因为以后没法赋值了；也不能重复声明3.为了防止意外修改变量 字符串连接反单元 123456var str=`点时空大会上空间的华盛顿和款式多好看的灰色空间`">
+<meta name="description" content="ES6 语法ECMA是语法标准 let:let定义变量 代码块 也就是{} 加个块级作用域；1.具备块级作用域 其实就是立即执行函数调用2.不能覆盖声明3.解决i问题 const—用来定义常量 1.一旦赋值不能修改；2.const必须赋初始值，因为以后没法赋值了；也不能重复声明3.为了防止意外修改变量 字符串连接反单元 var str = `xxx` 字符串模板  然后使用${a} 解构赋值12v">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6">
 <meta property="og:url" content="http://yoursite.com/2017/06/16/ES6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ES6 语法ECMA是语法标准 let:let定义变量 代码块 也就是{} 加个块级作用域；1.具备块级作用域 其实就是立即执行函数调用2.不能覆盖声明3.解决i问题 const—用来定义常量 1.一旦赋值不能修改；2.const必须赋初始值，因为以后没法赋值了；也不能重复声明3.为了防止意外修改变量 字符串连接反单元 123456var str=`点时空大会上空间的华盛顿和款式多好看的灰色空间`">
-<meta property="og:updated_time" content="2017-07-01T03:40:27.107Z">
+<meta property="og:description" content="ES6 语法ECMA是语法标准 let:let定义变量 代码块 也就是{} 加个块级作用域；1.具备块级作用域 其实就是立即执行函数调用2.不能覆盖声明3.解决i问题 const—用来定义常量 1.一旦赋值不能修改；2.const必须赋初始值，因为以后没法赋值了；也不能重复声明3.为了防止意外修改变量 字符串连接反单元 var str = `xxx` 字符串模板  然后使用${a} 解构赋值12v">
+<meta property="og:updated_time" content="2017-07-01T03:43:28.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
-<meta name="twitter:description" content="ES6 语法ECMA是语法标准 let:let定义变量 代码块 也就是{} 加个块级作用域；1.具备块级作用域 其实就是立即执行函数调用2.不能覆盖声明3.解决i问题 const—用来定义常量 1.一旦赋值不能修改；2.const必须赋初始值，因为以后没法赋值了；也不能重复声明3.为了防止意外修改变量 字符串连接反单元 123456var str=`点时空大会上空间的华盛顿和款式多好看的灰色空间`">
+<meta name="twitter:description" content="ES6 语法ECMA是语法标准 let:let定义变量 代码块 也就是{} 加个块级作用域；1.具备块级作用域 其实就是立即执行函数调用2.不能覆盖声明3.解决i问题 const—用来定义常量 1.一旦赋值不能修改；2.const必须赋初始值，因为以后没法赋值了；也不能重复声明3.为了防止意外修改变量 字符串连接反单元 var str = `xxx` 字符串模板  然后使用${a} 解构赋值12v">
 
 
 
@@ -320,42 +320,26 @@
         <h1 id="ES6-语法"><a href="#ES6-语法" class="headerlink" title="ES6 语法"></a>ES6 语法</h1><p>ECMA是语法标准</p>
 <h4 id="let"><a href="#let" class="headerlink" title="let:"></a>let:</h4><p>let定义变量 代码块 也就是{} 加个块级作用域；<br>1.具备块级作用域 其实就是立即执行函数调用<br>2.不能覆盖声明<br>3.解决i问题</p>
 <h4 id="const—用来定义常量"><a href="#const—用来定义常量" class="headerlink" title="const—用来定义常量"></a>const—用来定义常量</h4><p> 1.一旦赋值不能修改；<br>2.const必须赋初始值，因为以后没法赋值了；也不能重复声明<br>3.为了防止意外修改变量</p>
-<h4 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h4><p>反单元</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var str=`点时空大会上空间的华盛顿和款式多好看的灰色空间`</div><div class="line">```    </div><div class="line"></div><div class="line">字符串模板  然后使用$&#123;a&#125;</div><div class="line"></div><div class="line">#### 解构赋值</div></pre></td></tr></table></figure>
-<p>var [a,b,c] = [12,5,101];<br>var {a,b,c} = {a:5,b:12,c:101}; //跟顺序无关<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 模式匹配</div></pre></td></tr></table></figure></p>
-<p>var [a,[b,c],d] = [2,[5,7],24]; //作用结构一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 交互--数据解析</div><div class="line"></div><div class="line">给默认值:</div></pre></td></tr></table></figure></p>
-<p>var {time=12} = {};<br>console.log(time);// 没赋值的话就是12<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 复制数组</div><div class="line"></div><div class="line">1.循环</div><div class="line">2.Array.from(arr)</div><div class="line">3.arr2 = [...arr];</div></pre></td></tr></table></figure></p>
-<p>function show(…args){<br>    args.push(5);//原本args不是一个数组,加…就变为一个数组可以push<br>    console.log(args);<br>}<br>show(1,2,3,4);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">4.for key in arr   //key是索引  for key of</div><div class="line">arr //key是元素值   PS可以循环数组不可以循环对象</div><div class="line"></div><div class="line">#### Map对象   </div><div class="line"></div><div class="line">和json相似  key,value形式</div><div class="line">Map对象为了和for of循环配合而生</div></pre></td></tr></table></figure></p>
-<p>var map=new Map();<br>map.set(name,value); //设置<br>map.get(name);//获取<br>map.delete(name);//删除<br>//遍历map     不能用for in<br>for(var name of map){<br>    console.log(name); // a,apple   b,banana<br>}<br>for(var [key,value] of map){<br>    console.log(key, value); // key value<br>}<br>for(var name of map.entries()){<br>    console.log(name);<br>}<br>for(var key of map.keys()){    //只是循环key<br>    console.log(key);<br>}<br>for(var val of map.values()){     //只是循环value<br>    console.log(val);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 函数</div><div class="line"></div><div class="line">箭头函数：=&gt;</div></pre></td></tr></table></figure></p>
-<p> var show =a=&gt;a  function show(a){return a;}<br> var show=()=&gt;’welcome’;<br> function show(){return ‘welcome’;}<br> var show=() =&gt; { alert(1);}<br> function show(){ alert(1);}<br>//注意this不能使用了，this指向window<br>arguments也不能使用了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 对象</div><div class="line"></div><div class="line">##### 单体模式：</div><div class="line">json</div></pre></td></tr></table></figure></p>
-<pre><code>var name=&apos;abb&apos;;
-var age=101;
-var preson={
-    name,
-    age,
-    showName(){
-       return this.name;
-     },
-    showAge(){
-       return this.age;
-     }
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">##### 类：class</div><div class="line">构造函数：constructor	生成完实例以后，自己就执行的</div></pre></td></tr></table></figure>
-<pre><code>class Person{ //类
-      constructor(name,age){
-           this.name=name;
-           this.age=age;
-      }
-      showName(){
-           return this.name;
-      }
-      showAge(){
-           return this.age;
-       }
-    }
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">##### 继承：</div><div class="line">之前:  子类.prototype=new 父类();</div><div class="line"></div><div class="line">ES6:</div></pre></td></tr></table></figure>
-<p>class Worker extends Person{<br>    constructor(){<br>        super()    //调用父级构造<br>        }<br>        }<br>```</p>
-
+<h4 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h4><p>反单元 var str = `xxx`</p>
+<p>字符串模板  然后使用${a}</p>
+<h4 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var [a,b,c] = [12,5,101];</div><div class="line">var &#123;a,b,c&#125; = &#123;a:5,b:12,c:101&#125;; //跟顺序无关</div></pre></td></tr></table></figure>
+<h4 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var [a,[b,c],d] = [2,[5,7],24]; //作用结构一样</div></pre></td></tr></table></figure>
+<h4 id="交互–数据解析"><a href="#交互–数据解析" class="headerlink" title="交互–数据解析"></a>交互–数据解析</h4><p>给默认值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var &#123;time=12&#125; = &#123;&#125;;  </div><div class="line">console.log(time);// 没赋值的话就是12</div></pre></td></tr></table></figure>
+<h4 id="复制数组"><a href="#复制数组" class="headerlink" title="复制数组"></a>复制数组</h4><p>1.循环<br>2.Array.from(arr)<br>3.arr2 = […arr];</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function show(...args)&#123;</div><div class="line">	args.push(5);//原本args不是一个数组,加...就变为一个数组可以push</div><div class="line">	console.log(args);</div><div class="line">&#125;</div><div class="line">show(1,2,3,4);</div></pre></td></tr></table></figure>
+<p>4.for key in arr   //key是索引  for key of<br>arr //key是元素值   PS可以循环数组不可以循环对象</p>
+<h4 id="Map对象"><a href="#Map对象" class="headerlink" title="Map对象"></a>Map对象</h4><p>和json相似  key,value形式<br>Map对象为了和for of循环配合而生</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var map=new Map();</div><div class="line">map.set(name,value); //设置</div><div class="line">map.get(name);//获取</div><div class="line">map.delete(name);//删除</div><div class="line">//遍历map     不能用for in</div><div class="line">for(var name of map)&#123;</div><div class="line">	console.log(name); // a,apple   b,banana</div><div class="line">&#125;</div><div class="line">for(var [key,value] of map)&#123;</div><div class="line">	console.log(key, value); // key value</div><div class="line">&#125;</div><div class="line">for(var name of map.entries())&#123;</div><div class="line">	console.log(name);</div><div class="line">&#125;</div><div class="line">for(var key of map.keys())&#123;	//只是循环key</div><div class="line">	console.log(key);</div><div class="line">&#125;</div><div class="line">for(var val of map.values())&#123;     //只是循环value</div><div class="line">	console.log(val);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>箭头函数：=&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> var show =a=&gt;a  function show(a)&#123;return a;&#125;</div><div class="line"> var show=()=&gt;&apos;welcome&apos;;	</div><div class="line"> function show()&#123;return &apos;welcome&apos;;&#125;</div><div class="line"> var show=() =&gt; &#123; alert(1);&#125;	</div><div class="line"> function show()&#123; alert(1);&#125;</div><div class="line">//注意this不能使用了，this指向window</div><div class="line">arguments也不能使用了</div></pre></td></tr></table></figure>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><h5 id="单体模式："><a href="#单体模式：" class="headerlink" title="单体模式："></a>单体模式：</h5><p>json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var name=&apos;abb&apos;;</div><div class="line">var age=101;</div><div class="line">var preson=&#123;</div><div class="line">	name,</div><div class="line">	age,</div><div class="line">	showName()&#123;</div><div class="line">	   return this.name;</div><div class="line">	 &#125;,</div><div class="line">	showAge()&#123;</div><div class="line">	   return this.age;</div><div class="line">	 &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="类：class"><a href="#类：class" class="headerlink" title="类：class"></a>类：class</h5><p>构造函数：constructor    生成完实例以后，自己就执行的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Person&#123; //类</div><div class="line">	  constructor(name,age)&#123;</div><div class="line">	       this.name=name;</div><div class="line">	       this.age=age;</div><div class="line">	  &#125;</div><div class="line">	  showName()&#123;</div><div class="line">	       return this.name;</div><div class="line">	  &#125;</div><div class="line">	  showAge()&#123;</div><div class="line">	       return this.age;</div><div class="line">	   &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h5 id="继承："><a href="#继承：" class="headerlink" title="继承："></a>继承：</h5><p>之前:  子类.prototype=new 父类();</p>
+<p>ES6: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Worker extends Person&#123;</div><div class="line">	constructor()&#123;</div><div class="line">		super()	//调用父级构造</div><div class="line">		&#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -523,7 +507,7 @@ var preson={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-语法"><span class="nav-number">1.</span> <span class="nav-text">ES6 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#let"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">let:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const—用来定义常量"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">const—用来定义常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串连接"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">字符串连接</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-语法"><span class="nav-number">1.</span> <span class="nav-text">ES6 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#let"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">let:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const—用来定义常量"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">const—用来定义常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串连接"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">字符串连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解构赋值"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式匹配"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">模式匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互–数据解析"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">交互–数据解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制数组"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">复制数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map对象"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">Map对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单体模式："><span class="nav-number">1.0.0.10.1.</span> <span class="nav-text">单体模式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#类：class"><span class="nav-number">1.0.0.10.2.</span> <span class="nav-text">类：class</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#继承："><span class="nav-number">1.0.0.10.3.</span> <span class="nav-text">继承：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
