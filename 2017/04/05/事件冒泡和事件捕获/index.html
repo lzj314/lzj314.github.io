@@ -1,0 +1,698 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="事件冒泡和事件捕获事件冒泡和时间捕获都是为了解决事件流（事件发生顺序）的问题；两者分别由微软和网景公司提出。 1234&amp;lt;div id=&amp;quot;outer&amp;quot;&amp;gt;    &amp;lt;p id=&amp;quot;inner&amp;quot;&amp;gt;Click me!&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;//如果p和div都有click事件，那么会先触发哪个呢？ 事件冒泡(event bub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件冒泡和事件捕获">
+<meta property="og:url" content="http://yoursite.com/2017/04/05/事件冒泡和事件捕获/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="事件冒泡和事件捕获事件冒泡和时间捕获都是为了解决事件流（事件发生顺序）的问题；两者分别由微软和网景公司提出。 1234&amp;lt;div id=&amp;quot;outer&amp;quot;&amp;gt;    &amp;lt;p id=&amp;quot;inner&amp;quot;&amp;gt;Click me!&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;//如果p和div都有click事件，那么会先触发哪个呢？ 事件冒泡(event bub">
+<meta property="og:updated_time" content="2017-07-04T14:53:29.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="事件冒泡和事件捕获">
+<meta name="twitter:description" content="事件冒泡和事件捕获事件冒泡和时间捕获都是为了解决事件流（事件发生顺序）的问题；两者分别由微软和网景公司提出。 1234&amp;lt;div id=&amp;quot;outer&amp;quot;&amp;gt;    &amp;lt;p id=&amp;quot;inner&amp;quot;&amp;gt;Click me!&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;//如果p和div都有click事件，那么会先触发哪个呢？ 事件冒泡(event bub">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/05/事件冒泡和事件捕获/"/>
+
+
+
+
+
+  <title>事件冒泡和事件捕获 | Hexo</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/事件冒泡和事件捕获/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zj Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">事件冒泡和事件捕获</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T11:35:12+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h2><p>事件冒泡和时间捕获都是为了解决事件流（事件发生顺序）的问题；两者分别由微软和网景公司提出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;outer&quot;&gt;</div><div class="line">    &lt;p id=&quot;inner&quot;&gt;Click me!&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">//如果p和div都有click事件，那么会先触发哪个呢？</div></pre></td></tr></table></figure>
+<h3 id="事件冒泡-event-bubble"><a href="#事件冒泡-event-bubble" class="headerlink" title="事件冒泡(event bubble)"></a>事件冒泡(event bubble)</h3><p>形象的比喻为一颗水泡从底层冒出到水面上的过程；<br>也就是说事件会从最内层的元素开始发生，一直向上直到document对象。<br>那么上述例子的触发顺序：p&gt;div&gt;body&gt;html&gt;document</p>
+<h3 id="事件捕获-event-capturing"><a href="#事件捕获-event-capturing" class="headerlink" title="事件捕获(event capturing)"></a>事件捕获(event capturing)</h3><p>与事件冒泡刚好相反，事件会从最外层触发直到最内层的过程；<br>上述例子的触发顺序：document -&gt; html -&gt; body -&gt; div -&gt; p</p>
+<h3 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h3><p>DOM2级事件规定的事件流可以同时支持时间捕获和事件冒泡；作为开发者我们可以选择事件处理函数在哪一阶段被调用。<br>addEventListener方法用来为一个特定的元素绑定一个事件处理函数，是JavaScript中的常用方法。addEventListener有三个参数：</p>
+<blockquote>
+<p>element.addEventListener(event, function, useCapture)<br>event表示要绑定的事件，function表示触发事件后要执行的函数，useCapture默认值是false,表示在事件冒泡阶段调用事件处理函数，如果为true则表示在事件捕获阶段调用处理函数。</p>
+</blockquote>
+<h3 id="事件代理"><a href="#事件代理" class="headerlink" title="事件代理"></a>事件代理</h3><p>我们可以利用事件流的特性，使用一种叫事件代理的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;ul id=&quot;color-list&quot;&gt;</div><div class="line">    &lt;li&gt;red&lt;/li&gt;</div><div class="line">    &lt;li&gt;yellow&lt;/li&gt;</div><div class="line">    &lt;li&gt;blue&lt;/li&gt;</div><div class="line">    &lt;li&gt;green&lt;/li&gt;</div><div class="line">    &lt;li&gt;black&lt;/li&gt;</div><div class="line">    &lt;li&gt;white&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<p>点击页面中的li，弹出相应的颜色:<br>通常我们会这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">    var color_list = document.getElementById(&apos;color-list&apos;);</div><div class="line">    var colors = color_list.getElementsByTagName(&apos;li&apos;);</div><div class="line">    for(var i=0;i&lt;colors.length;i++)&#123;                          colors[i].addEventListener(&apos;click&apos;,showColor,false);</div><div class="line">    &#125;;</div><div class="line">    function showColor(e)&#123;</div><div class="line">        var x = e.target;</div><div class="line">        alert(&quot;The color is &quot; + x.innerHTML);</div><div class="line">    &#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>利用事件流的特性我们还可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">    var color_list = document.getElementById(&apos;color-list&apos;);</div><div class="line">    color_list.addEventListener(&apos;click&apos;,showColor,false);</div><div class="line">    function showColor(e)&#123;</div><div class="line">        var x = e.target;</div><div class="line">        if(x.nodeName.toLowerCase() === &apos;li&apos;)&#123;</div><div class="line">            alert(&apos;The color is &apos; + x.innerHTML);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>使用事件代理的好处不仅是少了一个事件处理函数，而且不同的元素可以有不同的处理方法。比如我们想在上述页面中再添加其他元素，我们不必在一次循环给每一个元素绑定事件。    </p>
+<h3 id="选择冒泡还是捕获？"><a href="#选择冒泡还是捕获？" class="headerlink" title="选择冒泡还是捕获？"></a>选择冒泡还是捕获？</h3><p>对于事件代理来说，捕获和冒泡没有明显的优劣之分。但从兼容性考虑（万恶的IE），还是使用事件冒泡模型。<br>如果要兼容低版本的IE浏览器，可以用IE的attachEvent函数:</p>
+<blockquote>
+<p>object.attachEvent(event,function)</p>
+</blockquote>
+<p>与addEventListener相似，两个参数分别是触发的事件和触发事件后调用的函数。</p>
+<blockquote>
+<p>注意，写事件名的时候要加上on前缀(onclick,onload)等</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/30/浏览器的渲染过程/" rel="next" title="简述浏览器的渲染过程">
+                <i class="fa fa-chevron-left"></i> 简述浏览器的渲染过程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/17/跨域/" rel="prev" title="跨域">
+                跨域 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="zj Lee" />
+          <p class="site-author-name" itemprop="name">zj Lee</p>
+           
+              <p class="site-description motion-element" itemprop="description">Yesterday is history,Tomorrow is mystery.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件冒泡和事件捕获"><span class="nav-number">1.</span> <span class="nav-text">事件冒泡和事件捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件冒泡-event-bubble"><span class="nav-number">1.1.</span> <span class="nav-text">事件冒泡(event bubble)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件捕获-event-capturing"><span class="nav-number">1.2.</span> <span class="nav-text">事件捕获(event capturing)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addEventListener"><span class="nav-number">1.3.</span> <span class="nav-text">addEventListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件代理"><span class="nav-number">1.4.</span> <span class="nav-text">事件代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择冒泡还是捕获？"><span class="nav-number">1.5.</span> <span class="nav-text">选择冒泡还是捕获？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zj Lee</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

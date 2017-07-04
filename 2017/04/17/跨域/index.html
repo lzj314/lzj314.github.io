@@ -1,0 +1,706 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是跨域？简单的来说就是从一个非同源网站发送请求获取数据，一般来说我们跨域请求控制台回报错:  XMLHttpRequest cannot load http://external-domain/service. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘http:/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/跨域/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是跨域？简单的来说就是从一个非同源网站发送请求获取数据，一般来说我们跨域请求控制台回报错:  XMLHttpRequest cannot load http://external-domain/service. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘http:/">
+<meta property="og:updated_time" content="2017-07-04T14:53:07.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域">
+<meta name="twitter:description" content="什么是跨域？简单的来说就是从一个非同源网站发送请求获取数据，一般来说我们跨域请求控制台回报错:  XMLHttpRequest cannot load http://external-domain/service. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘http:/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/17/跨域/"/>
+
+
+
+
+
+  <title>跨域 | Hexo</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zj Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">跨域</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T15:23:51+08:00">
+                2017-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h2><p>简单的来说就是从一个非同源网站发送请求获取数据，一般来说我们跨域请求控制台回报错:</p>
+<blockquote>
+<p>XMLHttpRequest cannot load <a href="http://external-domain/service" target="_blank" rel="external">http://external-domain/service</a>. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘<a href="http://my-domain’" target="_blank" rel="external">http://my-domain’</a> is therefore not allowed access.</p>
+</blockquote>
+<h2 id="为什么会出现跨域？"><a href="#为什么会出现跨域？" class="headerlink" title="为什么会出现跨域？"></a>为什么会出现跨域？</h2><p>说到跨域就不得不提起同源；如果两个页面拥有相同的协议，端口和域名，那么这两个页面就属于同一个源（origin）；如果不同源出于安全考虑js不允许数据交换。</p>
+<blockquote>
+<p><a href="https://www.baidu.com:80" target="_blank" rel="external">https://www.baidu.com:80</a><br>https=&gt;协议<br>www.baidu.com=&gt;域名   80=&gt;端口</p>
+</blockquote>
+<h2 id="实现跨域的4种方法"><a href="#实现跨域的4种方法" class="headerlink" title="实现跨域的4种方法"></a>实现跨域的4种方法</h2><p>4种方式分别是:<br>JSONP;<br>document.domain;<br>CORS;<br>[H5]postMessage</p>
+<h3 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h3><p>首先介绍的方法必然是jsonp；<br>假如你想获取其他网站的javascript脚本；你想要使用XMLHttpRequest对象来获取；但浏览器就会报错。<br>原理：所有具有src属性的html都是可以跨域的；<br>1.首先在客户端注册一个callback, 然后把callback的名字传给服务器。<br>2.服务器先生成 json 数据。将 json 数据直接以入参的方式，放置到 callback中，这样就生成了一段 js 语法的文档，返回给客户端。<br>3.客户端浏览器，解析script标签，并执行返回的 javascript 代码，此时数据作为参数，传入到了客户端预先定义好的 callback 函数里.（动态执行回调函数）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    function getWeather(data) &#123;</div><div class="line">        console.log(data);</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script src=&quot;http://x.y.com/xx.js&quot;&gt;</div><div class="line">//&quot;http://x.y.com/xx.js&quot;文件的内容</div><div class="line">getWeather(&#123;</div><div class="line">    &quot;城市&quot;: &quot;北京&quot;,</div><div class="line">    &quot;天气&quot;: &quot;大雾&quot;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在我们定义了getWeather函数后直接载入了xx.js.<br>在这个脚本中，执行了 getWeather 函数，并传入了一个对象。然后我们在这个函数中将这个对象输出到 console 中。</p>
+<h3 id="document-domain跨子域"><a href="#document-domain跨子域" class="headerlink" title="document.domain跨子域"></a>document.domain跨子域</h3><p>使用条件：<br>有其他页面 window 对象的引用。<br>二级域名相同。<br>协议相同。<br>端口相同。<br>浏览器同源策略限制之一是不能通过ajax方法请求不同源中的文档；第二个限制是浏览器中不同域的框架<br>之间不能进行js交互的，但不同框架之间可以获取彼此的window对象，但你不能使用window对象的属性和方法（蛋疼）；例如有个页面<a href="http://www.example.com/a.html" target="_blank" rel="external">http://www.example.com/a.html</a>  这个页面里有一个iframe它的src是<a href="http://example.com/b.html,他们是不同域的，故我们无法通过在页面中书写js代码来获取iframe中的东西；" target="_blank" rel="external">http://example.com/b.html,他们是不同域的，故我们无法通过在页面中书写js代码来获取iframe中的东西；</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	function onload() &#123;</div><div class="line">		var iframe = document.getElementById(&apos;iframe&apos;);</div><div class="line">		var win = iframe.contentWindow;//这里是能获取到iframe的window对象，但属性和方法几乎是不可用的</div><div class="line">		var doc = win.document;//获取不到</div><div class="line">		var name = win.name;//获取不到</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;iframe src=&quot;http://example.com/b.html&quot; frameborder=&quot;0&quot; id=&apos;frame&apos; onload=&quot;onload()&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure></p>
+<p>这里我们就可以使用document.domain了；我们只要把<a href="http://www.example.com/a.html" target="_blank" rel="external">http://www.example.com/a.html</a> 和 <a href="http://example.com/b.html这两个的document.domain设为一致就可以了；但注意只可以设置成自身或更高一级的父域，且主域必须相同。例如a.b.example.com" target="_blank" rel="external">http://example.com/b.html这两个的document.domain设为一致就可以了；但注意只可以设置成自身或更高一级的父域，且主域必须相同。例如a.b.example.com</a> 中某个文档的document.domain 可以设成a.b.example.com、b.example.com 、example.com中的任意一个但不可以设置成为c.a.b.example.com因为这是当前域的子域，也不可以设成baidu.com,因为主域已经不相同了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//两个页面都需要设置主域</div><div class="line">&lt;script&gt;</div><div class="line">document.domain = &apos;example.com&apos;;//设置成主域</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>如果想用ajax直接请求，即使设置了相同的document.domain也是不行的；因为修改document.domain的方法只适用于不同子域的框架间的交互。我们可以使用隐藏iframe做一个代理；原理就是让这个iframe载入一个与你想要通过ajax获取数据的目标页面处在相同的域的页面，所以这个iframe中的页面是可以正常使用ajax去获取你要的数据的，然后就是通过我们刚刚讲得修改document.domain的方法，让我们能通过js完全控制这个iframe，这样我们就可以让iframe去发送ajax请求，然后收到的数据我们也可以获得了。</p>
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p>CORS是跨源资源分享（Cross-Origin Resource Sharing）的缩写。“它是W3C标准，是跨源AJAX请求的根本解决方法。”</p>
+<h4 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h4><p>CORS实现跨域主要是通过在后台代码写上：</p>
+<blockquote>
+<p>res.header(“Accsess-Control-Allow-Origin”,“*”)</p>
+</blockquote>
+<p>一般使用ajax跨域请求时，浏览器会在请求头Request headers加上“origin：发起请求的域名”。<br>在后台代码加上</p>
+<blockquote>
+<p>res.header(“Accsess-Control-Allow-Origin”,“*”)</p>
+</blockquote>
+<p>这样会让浏览器在后端响应头Response headers加上</p>
+<blockquote>
+<p>“Accsess-Control-Allow-Origin：*”</p>
+</blockquote>
+<p>*号表示对任何域名发送的请求都回答和响应。</p>
+<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><p>IE11以下是不支持的。无法兼容低版本的IE浏览器来使用。但CORS用法简单，支持所有类型的HTTP请求。使用普通的XMLHttpRequest对象，用AJAX的写法就能实现跨域。</p>
+<h3 id="postMessage"><a href="#postMessage" class="headerlink" title="postMessage"></a>postMessage</h3><h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><p>HTML5中新增了window对象的window.postMessage方法,可以实现不同源的域名之间发送、监听消息：<br>发送消息：windowObj.postMessage(message, targetOrigin);<br>windowObj表示需要接收消息的window对象；message表示发送的消息；targetOrigin表示接收消息的window对象所在的域名。可以是*号，也可以指定一个明确的URL。<br>监听消息：使用监听事件message<br>oragin表示发送消息过来的域名<br>data表示发送的数据<br>source表示发送消息的window对象</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/05/事件冒泡和事件捕获/" rel="next" title="事件冒泡和事件捕获">
+                <i class="fa fa-chevron-left"></i> 事件冒泡和事件捕获
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/16/ES6/" rel="prev" title="ES6">
+                ES6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="zj Lee" />
+          <p class="site-author-name" itemprop="name">zj Lee</p>
+           
+              <p class="site-description motion-element" itemprop="description">Yesterday is history,Tomorrow is mystery.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是跨域？"><span class="nav-number">1.</span> <span class="nav-text">什么是跨域？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会出现跨域？"><span class="nav-number">2.</span> <span class="nav-text">为什么会出现跨域？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现跨域的4种方法"><span class="nav-number">3.</span> <span class="nav-text">实现跨域的4种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp"><span class="nav-number">3.1.</span> <span class="nav-text">jsonp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-domain跨子域"><span class="nav-number">3.2.</span> <span class="nav-text">document.domain跨子域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CORS"><span class="nav-number">3.3.</span> <span class="nav-text">CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现方法"><span class="nav-number">3.3.1.</span> <span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容性"><span class="nav-number">3.3.2.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postMessage"><span class="nav-number">3.4.</span> <span class="nav-text">postMessage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现方式"><span class="nav-number">3.4.1.</span> <span class="nav-text">实现方式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zj Lee</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
