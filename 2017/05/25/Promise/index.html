@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="参考地址最初接触编码规范，主要是看的这篇文章。例如：4个空格做一个缩进；1234.selector &amp;#123;    margin: 0;    padding: 0;&amp;#125; 选择器和{之间必须有空格；属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；1margin: 0; 列表型属性值书写在单行时， 逗号后面必须跟一个空格； 当一个rule包含多个选择器时，每个选择器声明必须">
+<meta name="description" content="参考阮一峰ES6入门 Promise对象含义Promise是异步编程的一种解决方法，较传统的回调函数加事件的方式更加合理和强大；ES6提供了原生的Promise对象；含义：简单的来说是一个保存着某个未来才会结束的事件（异步操作）的结果。promise是一个对象，从它可以获取异步操作的消息。Promise对象有两个特点：(1) 对象的状态不受外界而影响，Promise对象代表一个异步操作，有三种状态">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编码规范">
-<meta property="og:url" content="http://yoursite.com/2017/03/12/编码规范/index.html">
+<meta property="og:title" content="Promise">
+<meta property="og:url" content="http://yoursite.com/2017/05/25/Promise/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="参考地址最初接触编码规范，主要是看的这篇文章。例如：4个空格做一个缩进；1234.selector &amp;#123;    margin: 0;    padding: 0;&amp;#125; 选择器和{之间必须有空格；属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；1margin: 0; 列表型属性值书写在单行时， 逗号后面必须跟一个空格； 当一个rule包含多个选择器时，每个选择器声明必须">
-<meta property="og:updated_time" content="2017-07-04T14:51:34.229Z">
+<meta property="og:description" content="参考阮一峰ES6入门 Promise对象含义Promise是异步编程的一种解决方法，较传统的回调函数加事件的方式更加合理和强大；ES6提供了原生的Promise对象；含义：简单的来说是一个保存着某个未来才会结束的事件（异步操作）的结果。promise是一个对象，从它可以获取异步操作的消息。Promise对象有两个特点：(1) 对象的状态不受外界而影响，Promise对象代表一个异步操作，有三种状态">
+<meta property="og:updated_time" content="2017-07-05T02:09:03.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编码规范">
-<meta name="twitter:description" content="参考地址最初接触编码规范，主要是看的这篇文章。例如：4个空格做一个缩进；1234.selector &amp;#123;    margin: 0;    padding: 0;&amp;#125; 选择器和{之间必须有空格；属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；1margin: 0; 列表型属性值书写在单行时， 逗号后面必须跟一个空格； 当一个rule包含多个选择器时，每个选择器声明必须">
+<meta name="twitter:title" content="Promise">
+<meta name="twitter:description" content="参考阮一峰ES6入门 Promise对象含义Promise是异步编程的一种解决方法，较传统的回调函数加事件的方式更加合理和强大；ES6提供了原生的Promise对象；含义：简单的来说是一个保存着某个未来才会结束的事件（异步操作）的结果。promise是一个对象，从它可以获取异步操作的消息。Promise对象有两个特点：(1) 对象的状态不受外界而影响，Promise对象代表一个异步操作，有三种状态">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/12/编码规范/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/25/Promise/"/>
 
 
 
 
 
-  <title>编码规范 | Hexo</title>
+  <title>Promise | Hexo</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/12/编码规范/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/25/Promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zj Lee">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">编码规范</h1>
+          <h1 class="post-title" itemprop="name headline">Promise</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T12:34:18+08:00">
-                2017-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T09:05:49+08:00">
+                2017-05-25
               </time>
             
 
@@ -317,14 +317,20 @@
       
 
       
-        <p><a href="https://github.com/ecomfe/spec/blob/master/css-style-guide.md" target="_blank" rel="external">参考地址</a><br>最初接触编码规范，主要是看的这篇文章。<br>例如：4个空格做一个缩进；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.selector &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>选择器和{之间必须有空格；<br>属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">margin: 0;</div></pre></td></tr></table></figure></p>
-<p>列表型属性值书写在单行时， 逗号后面必须跟一个空格；</p>
-<p>当一个rule包含多个选择器时，每个选择器声明必须独占一行；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">.post,</div><div class="line">.page,</div><div class="line">.comment &#123;</div><div class="line">    line-height: 1.5;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* bad */</div><div class="line">.post, .page, .comment &#123;</div><div class="line">    line-height: 1.5;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p> 选择器+ &gt; ~两边各保留一个空格；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">main &gt; nav &#123;</div><div class="line">    padding: 10px;</div><div class="line">&#125;</div><div class="line">/* bad */</div><div class="line">main&gt;nav &#123;</div><div class="line">    padding: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>属性选择器中的值必须用双引号；<br>属性定义必须另起一行；<br>如无必要，不得为id class选择器添加类型选择器进行限定；<br>选择器的嵌套不应该大于3级，位置靠后的限定条件尽可能精确；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">#username input &#123;&#125;</div><div class="line">.comment .avatar &#123;&#125;</div><div class="line"></div><div class="line">/* bad */</div><div class="line">.page .header .login #username input &#123;&#125;</div><div class="line">.comment div * &#123;&#125;</div></pre></td></tr></table></figure></p>
-<p>属性定义后必须以分号结尾；<br>在可以使用缩写的情况下，尽量使用属性缩写；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">.post &#123;</div><div class="line">    font: 12px/1.5 arial, sans-serif;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* bad */</div><div class="line">.post &#123;</div><div class="line">    font-family: arial, sans-serif;</div><div class="line">    font-size: 12px;</div><div class="line">    line-height: 1.5;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>属性书写顺序：Formatting Model(布局方式，位置)&gt;Box Model(尺寸)&gt;Typographic(文本相关)&gt;Visual(视觉效果)<br>Formatting Model 相关属性包括：position / top / right / bottom / left / float / display / overflow 等<br>Box Model 相关属性包括：border / margin / padding / width / height 等<br>Typographic 相关属性包括：font / line-height / text-align / word-wrap 等<br>Visual 相关属性包括：background / color / transition / list-style 等<br>如果包含content属性应放在最前面;<br>清除浮动尽量使用伪类和触发BFC的方法；<br>文本内容必须用双引号；数值为0-1之间的小数，省略整数部分的0；长度为0省略单位<br>字号最好不小于12px；兼容性带私有前缀的属性由长到短排列等等。<br>代码规范是一个好的习惯的养成，需要自己严格要求养成良好的编码规范。</p>
+        <p><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="external">参考阮一峰ES6入门</a></p>
+<h2 id="Promise对象"><a href="#Promise对象" class="headerlink" title="Promise对象"></a>Promise对象</h2><h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><p>Promise是异步编程的一种解决方法，较传统的回调函数加事件的方式更加合理和强大；ES6提供了原生的Promise对象；<br>含义：简单的来说是一个保存着某个未来才会结束的事件（异步操作）的结果。promise是一个对象，从它可以获取异步操作的消息。<br>Promise对象有两个特点：<br>(1) 对象的状态不受外界而影响，Promise对象代表一个异步操作，有三种状态：Pending(进行中)，Resolved(已完成，又称Fulfilled)和Reject(失败)；异步操作的结果直接决定当前是哪一种状态；任何其他操作都无法改变。<br>(2) 一旦状态改变，就不会再变，随时可以得到结果。Promise对象的状态改变只有两种情况：<br>Pending=&gt;Resolved        Pengding=&gt;Rejected<br>只要这两种情况发生状态就不会再变了，结果会一直保持，如果改变已经发生了，再添加回调函数到Promise对象中，也会得到这个结果。这与Event完全不同。</p>
+<blockquote>
+<p>优点：避免回调的嵌套；将异步以同步操作的流程表达出来；提供统一接口。<br>缺点：无法取消Promise，一旦建立就立即执行中途无法取消；必须设置回调函数，不然会报错；当处于Pending状态是无法得知目前具体进展到哪个阶段。</p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p>Promise是一个构造函数，可以生成Promise实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	if(/*异步操作成功*/)&#123;</div><div class="line">		resolve(value);</div><div class="line">	&#125;else&#123;</div><div class="line">		reject(error);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>接收一个函数作为参数，这个参数还可以接收两个参数，resolve和reject：</p>
+<blockquote>
+<p>resolve将Promise对象的状态从Pending变为Resolved，在异步操作成功时调用，并将异步操作的结果作为参数传递出去。<br>reject将Promise对象的状态从Pending变为Rejected，在异步操作失败时调用，并将报错作为参数传递出去。</p>
+</blockquote>
+<p>Promise实例生成后，可以用then方法指定Resolved和Reject状态的回调函数。这两个函数都接受Promise对象传出的值作为参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">promise.then(function()&#123;//success  Resolved时调用&#125;,</div><div class="line">function()&#123;//failed  Rejected时调用&#125;)</div></pre></td></tr></table></figure></p>
+<p>简单实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function timeout(ms) &#123;</div><div class="line">  return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">    setTimeout(resolve, ms, &apos;done&apos;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">timeout(100).then((value) =&gt; &#123;</div><div class="line">  console.log(value);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>实例2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let promise = new Promise(function(resolve, reject) &#123;</div><div class="line">  console.log(&apos;Promise&apos;);</div><div class="line">  resolve();</div><div class="line">&#125;);</div><div class="line">promise.then(function() &#123;</div><div class="line">  console.log(&apos;Resolved.&apos;);</div><div class="line">&#125;);</div><div class="line">console.log(&apos;Hi!&apos;);</div><div class="line">//Promise </div><div class="line">//Hi</div><div class="line">//Resolved</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -361,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/18/js学习总结/" rel="next" title="javascript基础知识">
-                <i class="fa fa-chevron-left"></i> javascript基础知识
+              <a href="/2017/05/16/ES6/" rel="next" title="ES6">
+                <i class="fa fa-chevron-left"></i> ES6
               </a>
             
           </div>
@@ -370,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/20/白屏和fouc-async和defer/" rel="prev" title="白屏和fouc,async和defer">
-                白屏和fouc,async和defer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -420,8 +422,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -474,6 +485,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise对象"><span class="nav-number">1.</span> <span class="nav-text">Promise对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#含义"><span class="nav-number">1.1.</span> <span class="nav-text">含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本语法"><span class="nav-number">1.2.</span> <span class="nav-text">基本语法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

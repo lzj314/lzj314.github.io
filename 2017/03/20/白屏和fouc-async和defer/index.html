@@ -90,16 +90,18 @@
 
 
 
-<meta name="description" content="参考地址最初接触编码规范，主要是看的这篇文章。例如：4个空格做一个缩进；1234.selector &amp;#123;    margin: 0;    padding: 0;&amp;#125; 选择器和{之间必须有空格；属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；1margin: 0; 列表型属性值书写在单行时， 逗号后面必须跟一个空格； 当一个rule包含多个选择器时，每个选择器声明必须">
+<meta name="description" content="CSS和JS在网页中的放置顺序  一般将CSS文件放在header内，页面渲染时先生成DOM树再根据CSS文件渲染树，如果CSS文件放在尾部会造成闪跳或者布局很乱很丑直到CSS加载完毕；  JS文件放在body尾部，因为如果按照传统将JS文件也放在header内，那么浏览器自上而下的执行代码到js文件会将所有的JS代码下载执行完毕后才会呈现页面的内容，这会导致让用户感到非常卡顿。所以一般我们将JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编码规范">
-<meta property="og:url" content="http://yoursite.com/2017/03/12/编码规范/index.html">
+<meta property="og:title" content="白屏和fouc,async和defer">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/白屏和fouc-async和defer/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="参考地址最初接触编码规范，主要是看的这篇文章。例如：4个空格做一个缩进；1234.selector &amp;#123;    margin: 0;    padding: 0;&amp;#125; 选择器和{之间必须有空格；属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；1margin: 0; 列表型属性值书写在单行时， 逗号后面必须跟一个空格； 当一个rule包含多个选择器时，每个选择器声明必须">
-<meta property="og:updated_time" content="2017-07-04T14:51:34.229Z">
+<meta property="og:description" content="CSS和JS在网页中的放置顺序  一般将CSS文件放在header内，页面渲染时先生成DOM树再根据CSS文件渲染树，如果CSS文件放在尾部会造成闪跳或者布局很乱很丑直到CSS加载完毕；  JS文件放在body尾部，因为如果按照传统将JS文件也放在header内，那么浏览器自上而下的执行代码到js文件会将所有的JS代码下载执行完毕后才会呈现页面的内容，这会导致让用户感到非常卡顿。所以一般我们将JS">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5604398-6d71662c2c5eda82?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-07-08T07:24:17.617Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编码规范">
-<meta name="twitter:description" content="参考地址最初接触编码规范，主要是看的这篇文章。例如：4个空格做一个缩进；1234.selector &amp;#123;    margin: 0;    padding: 0;&amp;#125; 选择器和{之间必须有空格；属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；1margin: 0; 列表型属性值书写在单行时， 逗号后面必须跟一个空格； 当一个rule包含多个选择器时，每个选择器声明必须">
+<meta name="twitter:title" content="白屏和fouc,async和defer">
+<meta name="twitter:description" content="CSS和JS在网页中的放置顺序  一般将CSS文件放在header内，页面渲染时先生成DOM树再根据CSS文件渲染树，如果CSS文件放在尾部会造成闪跳或者布局很乱很丑直到CSS加载完毕；  JS文件放在body尾部，因为如果按照传统将JS文件也放在header内，那么浏览器自上而下的执行代码到js文件会将所有的JS代码下载执行完毕后才会呈现页面的内容，这会导致让用户感到非常卡顿。所以一般我们将JS">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5604398-6d71662c2c5eda82?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/12/编码规范/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/20/白屏和fouc-async和defer/"/>
 
 
 
 
 
-  <title>编码规范 | Hexo</title>
+  <title>白屏和fouc,async和defer | Hexo</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/12/编码规范/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/白屏和fouc-async和defer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zj Lee">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">编码规范</h1>
+          <h1 class="post-title" itemprop="name headline">白屏和fouc,async和defer</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T12:34:18+08:00">
-                2017-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T15:21:54+08:00">
+                2017-03-20
               </time>
             
 
@@ -317,14 +319,19 @@
       
 
       
-        <p><a href="https://github.com/ecomfe/spec/blob/master/css-style-guide.md" target="_blank" rel="external">参考地址</a><br>最初接触编码规范，主要是看的这篇文章。<br>例如：4个空格做一个缩进；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.selector &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>选择器和{之间必须有空格；<br>属性名与之后的：之间不允许有空格；但：和属性值之间必须有空格；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">margin: 0;</div></pre></td></tr></table></figure></p>
-<p>列表型属性值书写在单行时， 逗号后面必须跟一个空格；</p>
-<p>当一个rule包含多个选择器时，每个选择器声明必须独占一行；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">.post,</div><div class="line">.page,</div><div class="line">.comment &#123;</div><div class="line">    line-height: 1.5;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* bad */</div><div class="line">.post, .page, .comment &#123;</div><div class="line">    line-height: 1.5;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p> 选择器+ &gt; ~两边各保留一个空格；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">main &gt; nav &#123;</div><div class="line">    padding: 10px;</div><div class="line">&#125;</div><div class="line">/* bad */</div><div class="line">main&gt;nav &#123;</div><div class="line">    padding: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>属性选择器中的值必须用双引号；<br>属性定义必须另起一行；<br>如无必要，不得为id class选择器添加类型选择器进行限定；<br>选择器的嵌套不应该大于3级，位置靠后的限定条件尽可能精确；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">#username input &#123;&#125;</div><div class="line">.comment .avatar &#123;&#125;</div><div class="line"></div><div class="line">/* bad */</div><div class="line">.page .header .login #username input &#123;&#125;</div><div class="line">.comment div * &#123;&#125;</div></pre></td></tr></table></figure></p>
-<p>属性定义后必须以分号结尾；<br>在可以使用缩写的情况下，尽量使用属性缩写；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* good */</div><div class="line">.post &#123;</div><div class="line">    font: 12px/1.5 arial, sans-serif;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* bad */</div><div class="line">.post &#123;</div><div class="line">    font-family: arial, sans-serif;</div><div class="line">    font-size: 12px;</div><div class="line">    line-height: 1.5;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>属性书写顺序：Formatting Model(布局方式，位置)&gt;Box Model(尺寸)&gt;Typographic(文本相关)&gt;Visual(视觉效果)<br>Formatting Model 相关属性包括：position / top / right / bottom / left / float / display / overflow 等<br>Box Model 相关属性包括：border / margin / padding / width / height 等<br>Typographic 相关属性包括：font / line-height / text-align / word-wrap 等<br>Visual 相关属性包括：background / color / transition / list-style 等<br>如果包含content属性应放在最前面;<br>清除浮动尽量使用伪类和触发BFC的方法；<br>文本内容必须用双引号；数值为0-1之间的小数，省略整数部分的0；长度为0省略单位<br>字号最好不小于12px；兼容性带私有前缀的属性由长到短排列等等。<br>代码规范是一个好的习惯的养成，需要自己严格要求养成良好的编码规范。</p>
+        <h3 id="CSS和JS在网页中的放置顺序"><a href="#CSS和JS在网页中的放置顺序" class="headerlink" title="CSS和JS在网页中的放置顺序"></a>CSS和JS在网页中的放置顺序</h3><p>  一般将CSS文件放在header内，页面渲染时先生成DOM树再根据CSS文件渲染树，如果CSS文件放在尾部会造成闪跳或者布局很乱很丑直到CSS加载完毕；<br>  JS文件放在body尾部，因为如果按照传统将JS文件也放在header内，那么浏览器自上而下的执行代码到js文件会将所有的JS代码下载执行完毕后才会呈现页面的内容，这会导致让用户感到非常卡顿。所以一般我们将JS文件放在body的尾部。并且我们通常引入外部引入JS文件而并非内部嵌入代码，这样做的好处有以下三点：</p>
+<ol>
+<li>可维护性</li>
+<li>可缓存</li>
+<li>适应未来<br>注：外部引入的JS文件script标签内不允许再写入其他代码。</li>
+</ol>
+<h3 id="白屏和FOUC"><a href="#白屏和FOUC" class="headerlink" title="白屏和FOUC"></a>白屏和FOUC</h3><p>  FOUC（无样式内容闪烁）和白屏出现的主要原因是不同浏览器加载渲染页面机制的不同所造成的。<br>  有的是等待CSS加载完成之后，对HTML元素进行渲染和展示（白屏问题），如果把样式放在底部,对于IE浏览器以及Chrome,在某些场景下(新窗口打开,刷新等)页面会出现白屏,而不是内容逐步展现；如果使用 @import 标签,即使 CSS 放入 link, 并且放在头部,也可能出现白屏。PS：加载 JavaScript 时,会禁用并发,并且阻止其他内容的下载. 所以把 JavaScript 放入页面顶部也会导致白屏现象.。<br>  有的是先对HTML元素进行展示，然后等待CSS加载完成之后重新对样式进行修改（FOUC无样式内容闪烁）。如果把样式放在底部,对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等),会出现 FOUC 现象(逐步加载无样式的内容,等CSS加载后页面突然展现样式).对于 Firefox 会一直表现出 FOUC .<br>  为了解决白屏和FOUC，我们一般将CSS放在head标签里面。</p>
+<h3 id="async和defer的作用和区别"><a href="#async和defer的作用和区别" class="headerlink" title="async和defer的作用和区别"></a>async和defer的作用和区别</h3><p>当浏览器遇到script脚本时：</p>
+<ol>
+<li><script src="script.js"></script>如果没有async或defer，那么浏览器会解析并执行script，并且在执行完之前都不会执行下面的代码。</li>
+<li><script async src="script.js"></script>：表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效,也就是说解析执行的过程会和加载并渲染后续文档元素的过程同时进行（异步），但若有多个标记为async 的脚本并不保证按照指定它们的先后顺序执行。</li>
+<li><script defer src="script.js"></script>：表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。意思是如果有defer那么脚本的加载会和后续元素的加载同时进行（异步），但该脚本会在所有元素解析完成后才会执行,并且在DOMContentLoaded事件触发前。（PS红宝书中说的现实中延迟脚本不一定按顺序执行，也不一定在DOMContentLoaded事件触发前执行，最好只包含一个延迟脚本）。<br><img src="http://upload-images.jianshu.io/upload_images/5604398-6d71662c2c5eda82?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="引用一张图"><br>图中绿色线代表HTML解析，蓝色线表示网络读取，红色线代表执行时间。defer和async的区别在于script下载完何时执行；图中未说明defer是按照加载顺序执行的；async是乱序执行的，不管你声明的顺序如何只要它加载完了就会立刻执行。</li>
+</ol>
 
       
     </div>
@@ -361,8 +368,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/18/js学习总结/" rel="next" title="javascript基础知识">
-                <i class="fa fa-chevron-left"></i> javascript基础知识
+              <a href="/2017/03/12/编码规范/" rel="next" title="编码规范">
+                <i class="fa fa-chevron-left"></i> 编码规范
               </a>
             
           </div>
@@ -371,8 +378,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/20/白屏和fouc-async和defer/" rel="prev" title="白屏和fouc,async和defer">
-                白屏和fouc,async和defer <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/30/浏览器的渲染过程/" rel="prev" title="简述浏览器的渲染过程">
+                简述浏览器的渲染过程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -420,8 +427,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -474,6 +490,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS和JS在网页中的放置顺序"><span class="nav-number">1.</span> <span class="nav-text">CSS和JS在网页中的放置顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白屏和FOUC"><span class="nav-number">2.</span> <span class="nav-text">白屏和FOUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async和defer的作用和区别"><span class="nav-number">3.</span> <span class="nav-text">async和defer的作用和区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
