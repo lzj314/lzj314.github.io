@@ -154,6 +154,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p><a href="http://www.cnblogs.com/aaronjs/archive/2012/06/30/2570970.html" target="_blank" rel="external">参考文章地址</a><br>使用一些字符，按照固定的语法，来描述规则；<br>正则表达式以/开头/结尾。<br>^匹配字符串开头位置<br>$匹配字符串结束位置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str=str.replace(<span class="regexp">/\s+|\s+$/g</span>,<span class="string">''</span>);</div><div class="line"><span class="comment">// \s是不可见字符，\s+大于等于1个不可见字符，|逻辑或</span></div></pre></td></tr></table></figure></p>
+<p>正则表达式可以</p>
+<ol>
+<li>测试字符串的某个模式，例如测试一个输入字符串是否存在电话号码或信用卡号，称为数据的有效验证</li>
+<li>替换文本：标识特定文本替换为别的文字</li>
+<li>根据模式匹配从字符串中提取一个子字符串。<h3 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>();  <span class="comment">//RegExp是个对象类似于Array</span></div><div class="line">re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'a'</span>);匹配字母a</div><div class="line">re =<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'a'</span>,<span class="string">'i'</span>);第二个参数有g(全局模式),i(不区分大小写),m(执行多行匹配)</div><div class="line"><span class="keyword">var</span> re=<span class="regexp">/a/gi</span>; <span class="comment">//字面量声明方式</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="正则表达式方法"><a href="#正则表达式方法" class="headerlink" title="正则表达式方法"></a>正则表达式方法</h3><ul>
+<li>test 返回一个boolean值，它指出在被查找的字符串中是否存在模式，如果存在返回true，否则返回false。</li>
+<li>exec，用正则表达式模式在字符串中查找并包含该查找结果的一个数组</li>
+<li>compile，把正则表达式编译为内部格式，从而执行的更快</li>
+<li>source,返回正则表达式模式的文本的复本。只读。<br>lastIndex,返回字符位置，它是被查找字符串中下一次成功匹配的开始位置。<br>1…9,返回九个在模式匹配期间找到的、最近保存的部分。只读。<br>input ($_),返回执行规范表述查找的字符串。只读。<br>lastMatch ($&amp;),返回任何正则表达式搜索过程中的最后匹配的字符。只读。<br>lastParen ($+),如果有的话，返回任何正则表达式查找过程中最后括的子匹配。只读。<br>leftContext ($`),返回被查找的字符串中从字符串开始位置到最后匹配之前的位置之间的字符。只读。<br>rightContext ($’),返回被搜索的字符串中从最后一个匹配位置开始到字符串结尾之间的字符。只读。<br>String对象一些和正则表达式相关的方法 <blockquote>
+<p>match,找到一个或多个正则表达式的匹配。<br>  replace,替换与正则表达式匹配的子串。<br>  search,检索与正则表达式相匹配的值。<br>  split,把字符串分割为字符串数组。 </p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str=<span class="string">'he'</span>;</div><div class="line"><span class="keyword">var</span> re=<span class="regexp">/he/i</span>;</div><div class="line">alert(re.test(str));<span class="comment">//true</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str=<span class="string">'Certainly!He loves her!'</span>;</div><div class="line"><span class="keyword">var</span> re=<span class="regexp">/^he/i</span>;</div><div class="line">alert(re.test(str));<span class="comment">//false  因为he不在str的最开始</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str=<span class="string">'Certainly!He loves her!'</span>;</div><div class="line"><span class="keyword">var</span> re=<span class="regexp">/^he$/i</span>;</div><div class="line">alert(re.test(str));<span class="comment">//false</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str=<span class="string">'he'</span>;</div><div class="line"><span class="keyword">var</span> re=<span class="regexp">/^he$/i</span>;</div><div class="line">alert(re.test(str));<span class="comment">//true</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">re=<span class="regexp">/\s/</span>; <span class="comment">// \s匹配任何空白字符</span></div><div class="line">str=<span class="string">'user Name'</span>;</div><div class="line">alert(re.test(str));<span class="comment">//true</span></div><div class="line"><span class="comment">//下个例子</span></div><div class="line">re=<span class="regexp">/^[a-z]/i</span>;<span class="comment">//匹配开头为字母的任意字符，匹配英文字母不区分大小写</span></div><div class="line">str=<span class="string">'variableName'</span>;</div><div class="line">alert(re.test(str));<span class="comment">//true</span></div><div class="line">str=<span class="string">'123abc'</span>;</div><div class="line">alert(re.test(str));<span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>当然,仅仅知道了字符串是否匹配模式还不够,我们还需要知道哪些字符匹配了模式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> osVersion = <span class="string">"Ubuntu 8"</span>;<span class="comment">//其中的8表示系统主版本号</span></div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/^[a-z]+\s+\d+$/i</span>;<span class="comment">//+号表示字符最少要出现一次，\s表示空白字符，\d表示一个数字</span></div><div class="line">alert(re.test(osVersion));<span class="comment">//true;/但我们想知道主版本号</span></div><div class="line"><span class="comment">//另一个方法exec，返回一个数组，数字的第一个元素为完整的匹配内容</span></div><div class="line">re=<span class="regexp">/^[a-z]+\s+\d+$/i</span>;</div><div class="line">arr=re.exec(osVersion)</div><div class="line">alert(arr[<span class="number">0</span>]);<span class="comment">//  将osVersion完整输出,因为整个字符串刚好匹配re  </span></div><div class="line">re=<span class="regexp">/\d+/</span>;</div><div class="line"><span class="keyword">var</span> arr=re.exec(osVersion);</div><div class="line">alert(arr[<span class="number">0</span>]);<span class="comment">//8</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//exec返回的数组第1到n元素中包含的是匹配中出现的任意一个子匹配  </span></div><div class="line">re=<span class="regexp">/^[a-z]+\s+(\d+)$/i</span>;<span class="comment">//用()来创建子匹配  </span></div><div class="line">arr =re.exec(osVersion);  </div><div class="line">alert(arr[<span class="number">0</span>]);<span class="comment">//整个osVersion,也就是正则表达式的完整匹配  </span></div><div class="line">alert(arr[<span class="number">1</span>]);<span class="comment">//8,第一个子匹配,事实也可以这样取出主版本号  </span></div><div class="line">alert(arr.length);<span class="comment">//2  </span></div><div class="line">osVersion = <span class="string">"Ubuntu 8.10"</span>;<span class="comment">//取出主版本号和次版本号  </span></div><div class="line">re = <span class="regexp">/^[a-z]+\s+(\d+)\.(\d+)$/i</span>;<span class="comment">//.是正则表达式元字符之一,若要用它的字面意义须转义  </span></div><div class="line">arr = re.exec(osVersion);  </div><div class="line">alert(arr[<span class="number">0</span>]);<span class="comment">//完整的osVersion  </span></div><div class="line">alert(arr[<span class="number">1</span>]);<span class="comment">//8  </span></div><div class="line">alert(arr[<span class="number">2</span>]);<span class="comment">//10</span></div></pre></td></tr></table></figure>
+<p>注意,当字符串不匹配re时,exec方法将返回null<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//replace方法,用于替换字符串  </span></div><div class="line"><span class="keyword">var</span> str =<span class="string">"some money"</span>;  </div><div class="line">alert(str.replace(<span class="string">"some"</span>,<span class="string">"much"</span>));<span class="comment">//much money  </span></div><div class="line"><span class="comment">//replace的第一个参数可以为正则表达式  </span></div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/\s/</span>;<span class="comment">//空白字符  </span></div><div class="line">alert(str.replace(re,<span class="string">"%"</span>));<span class="comment">//some%money  </span></div><div class="line"><span class="comment">//在不知道字符串中有多少空白字符时,正则表达式极为方便  </span></div><div class="line">str =<span class="string">"some some             \tsome\t\f"</span>;  </div><div class="line">re = <span class="regexp">/\s+/</span>;  </div><div class="line">alert(str.replace(re,<span class="string">"#"</span>));<span class="comment">//但这样只会将第一次出现的一堆空白字符替换掉  </span></div><div class="line"><span class="comment">//因为一个正则表达式只能进行一次匹配,\s+匹配了第一个空格后就退出了  </span></div><div class="line">re = <span class="regexp">/\s+/g</span>;<span class="comment">//g,全局标志,将使正则表达式匹配整个字符串  </span></div><div class="line">alert(str.replace(re,<span class="string">"@"</span>));<span class="comment">//some@some@some@  </span></div><div class="line"><span class="comment">//另一个与之相似的是split  </span></div><div class="line"><span class="keyword">var</span> str = <span class="string">"a-bd-c"</span>;  </div><div class="line"><span class="keyword">var</span> arr = str.split(<span class="string">"-"</span>);<span class="comment">//返回["a","bd","c"]  </span></div><div class="line"><span class="comment">//如果str是用户输入的,他可能输入a-bd-c也可能输入a bd c或a_bd_c,但不会是abdc(这样就说他输错了)  </span></div><div class="line">str = <span class="string">"a_db-c"</span>;<span class="comment">//用户以他喜欢的方式加分隔符s  </span></div><div class="line">re=<span class="regexp">/[^a-z]/i</span>;<span class="comment">//前面我们说^表示字符开始,但在[]里它表示一个负字符集  </span></div><div class="line"><span class="comment">//匹配任何不在指定范围内的任意字符,这里将匹配除字母处的所有字符  </span></div><div class="line">arr = str.split(re);<span class="comment">//仍返回["a","bd","c"];  </span></div><div class="line"><span class="comment">//在字符串中查找时我们常用indexOf,与之对应用于正则查找的方法是search  </span></div><div class="line">str = <span class="string">"My age is 18.Golden age!"</span>;<span class="comment">//年龄不是一定的,我们用indexOf不能查找它的位置  </span></div><div class="line">re = <span class="regexp">/\d+/</span>;  </div><div class="line">alert(str.search(re));<span class="comment">//返回查找到的字符串开始下标10  </span></div><div class="line"><span class="comment">//注意,因为查找本身就是出现第一次就立即返回,所以无需在search时使用g标志  </span></div><div class="line"><span class="comment">//下面的代码虽然不出错,但g标志是多余的  </span></div><div class="line">re=<span class="regexp">/\d+/g</span>;  </div><div class="line">alert(str.search(re));<span class="comment">//仍然是10</span></div></pre></td></tr></table></figure></p>
+<p>注意,当search方法没有找到匹配时,将返回-1 ;<br>类似于exec方法,String对象的match方法也用于将字符串与正则表达式进行匹配并返回结果数组.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"My name is CJ.Hello everyone!"</span>;  </div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/[A-Z]/</span>;<span class="comment">//匹配所有大写字母  </span></div><div class="line"><span class="keyword">var</span> arr = str.match(re);<span class="comment">//返回数组  </span></div><div class="line">alert(arr);<span class="comment">//数组中只会包含一个M,因为我们没有使用全局匹配  </span></div><div class="line">re = <span class="regexp">/[A-Z]/g</span>;  </div><div class="line">arr = str.match(re);  </div><div class="line">alert(arr);<span class="comment">//M,C,J,H  </span></div><div class="line"><span class="comment">//从字符串中抽取单词  </span></div><div class="line">re = <span class="regexp">/\b[a-z]*\b/gi</span>;<span class="comment">//\b表示单词边界  </span></div><div class="line">str = <span class="string">"one two three four"</span>;  </div><div class="line">alert(str.match(re));<span class="comment">//one,two,three,four</span></div></pre></td></tr></table></figure></p>
+<h3 id="RegExp对象实例的一些属性"><a href="#RegExp对象实例的一些属性" class="headerlink" title="RegExp对象实例的一些属性"></a>RegExp对象实例的一些属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/[a-z]/i</span>;  </div><div class="line">alert(re.source);<span class="comment">//将[a-z]字符串输出  </span></div><div class="line"><span class="comment">//请注意,直接alert(re)会将正则表达式连同前向斜线与标志输出,这是re.toString方法定义的</span></div></pre></td></tr></table></figure>
+<p>每个RegExp对象的实例具有lastIndex属性,它是被查找字符串中下一次成功匹配的开始位置,默认值是-1。 lastIndex 属性被 RegExp 对象的 exec 和 test 方法修改.并且它是可写的.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/[A-Z]/</span>;  </div><div class="line"><span class="comment">//exec方法执行后,修改了re的lastIndex属性,  </span></div><div class="line"><span class="keyword">var</span> str = <span class="string">"Hello,World!!!"</span>;  </div><div class="line"><span class="keyword">var</span> arr = re.exec(str);  </div><div class="line">alert(re.lastIndex);<span class="comment">//0,因为没有设置全局标志  </span></div><div class="line">re = <span class="regexp">/[A-Z]/g</span>;  </div><div class="line">arr = re.exec(str);  </div><div class="line">alert(re.lastIndex);<span class="comment">//1  </span></div><div class="line">arr = re.exec(str);  </div><div class="line">alert(re.lastIndex);<span class="comment">//7</span></div></pre></td></tr></table></figure></p>
+<p>当匹配失败（后面没有匹配），或lastIndex值大于字符串长度时，再执行exec等方法会将lastIndex设为0(开始位置)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/[A-Z]/</span>;  </div><div class="line"><span class="keyword">var</span> str = <span class="string">"Hello,World!!!"</span>;  </div><div class="line">re.lastIndex = <span class="number">120</span>;  </div><div class="line"><span class="keyword">var</span> arr = re.exec(str);  </div><div class="line">alert(re.lastIndex);<span class="comment">//0</span></div></pre></td></tr></table></figure></p>
+<h3 id="RegExp对象的静态属性"><a href="#RegExp对象的静态属性" class="headerlink" title="RegExp对象的静态属性"></a>RegExp对象的静态属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//input 最后用于匹配的字符串（传递给test,exec方法的字符串）  </span></div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/[A-Z]/</span>;  </div><div class="line"><span class="keyword">var</span> str = <span class="string">"Hello,World!!!"</span>;  </div><div class="line"><span class="keyword">var</span> arr = re.exec(str);  </div><div class="line">alert(<span class="built_in">RegExp</span>.input);<span class="comment">//Hello,World!!!  </span></div><div class="line">re.exec(<span class="string">"tempstr"</span>);  </div><div class="line">alert(<span class="built_in">RegExp</span>.input);<span class="comment">//仍然是Hello,World!!!,因为tempstr不匹配  </span></div><div class="line"><span class="comment">//lastMatch 最后匹配的字符  </span></div><div class="line">re = <span class="regexp">/[a-z]/g</span>;  </div><div class="line">str = <span class="string">"hi"</span>;  </div><div class="line">re.test(str);  </div><div class="line">alert(<span class="built_in">RegExp</span>.lastMatch);<span class="comment">//h  </span></div><div class="line">re.test(str);  </div><div class="line">alert(<span class="built_in">RegExp</span>[<span class="string">"$&amp;"</span>]);<span class="comment">//i  ,$&amp;是lastMatch的短名字，但由于它不是合法变量名，所以要。。  </span></div><div class="line"><span class="comment">//lastParen 最后匹配的分组  </span></div><div class="line">re = <span class="regexp">/[a-z](\d+)/gi</span>;  </div><div class="line">str = <span class="string">"Class1 Class2 Class3"</span>;  </div><div class="line">re.test(str);  </div><div class="line">alert(<span class="built_in">RegExp</span>.lastParen);<span class="comment">//1  </span></div><div class="line">re.test(str);  </div><div class="line">alert(<span class="built_in">RegExp</span>[<span class="string">"$+"</span>]);<span class="comment">//2  </span></div><div class="line"><span class="comment">//leftContext  返回被查找的字符串中从字符串开始位置到最后匹配之前的位置之间的字符  </span></div><div class="line"><span class="comment">//rigthContext 返回被搜索的字符串中从最后一个匹配位置开始到字符串结尾之间的字符  </span></div><div class="line">re = <span class="regexp">/[A-Z]/g</span>;  </div><div class="line">str = <span class="string">"123ABC456"</span>;  </div><div class="line">re.test(str);  </div><div class="line">alert(<span class="built_in">RegExp</span>.leftContext);<span class="comment">//123  </span></div><div class="line">alert(<span class="built_in">RegExp</span>.rightContext);<span class="comment">//BC456  </span></div><div class="line">re.test(str);  </div><div class="line">alert(<span class="built_in">RegExp</span>[<span class="string">"$`"</span>]);<span class="comment">//123A  </span></div><div class="line">alert(<span class="built_in">RegExp</span>[<span class="string">"$'"</span>]);<span class="comment">//C456</span></div></pre></td></tr></table></figure>
+<p>multiline属性返回正则表达式是否使用多行模式,这个属性不针对某个正则表达式实例，而是针对所有正则表达式，并且这个属性可写.(IE与Opera不支持这个属性)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">RegExp</span>.multiline);  </div><div class="line"><span class="comment">//因为IE，Opera不支持这个属性，所以最好还是单独指定  </span></div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/\w+/m</span>;  </div><div class="line">alert(re.multiline);  </div><div class="line">alert(<span class="built_in">RegExp</span>[<span class="string">"$*"</span>]);<span class="comment">//RegExp对象的静态属性不会因为给RegExp某个对象实例指定了m标志而改变  </span></div><div class="line"><span class="built_in">RegExp</span>.multiline = <span class="literal">true</span>;<span class="comment">//这将打开所有正则表达式实例的多行匹配模式  </span></div><div class="line">alert(<span class="built_in">RegExp</span>.multiline);</div></pre></td></tr></table></figure></p>
+<p>使用元字符注意事项:元字符是正则表达式的一部分，当我们要匹配正则表达式本身时，必须对这些元字符转义.下面是正则表达式用到的所有元字符<br>( [ { \ ^ $ | ) ? * + .<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"?"</span>;  </div><div class="line">  	 <span class="keyword">var</span> re = <span class="regexp">/?/</span>;  </div><div class="line">  	 alert(re.test(str));<span class="comment">//出错，因为？是元字符，必须转义  </span></div><div class="line">   	 re = <span class="regexp">/\?/</span>;  </div><div class="line">   	 alert(re.test(str));<span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>使用RegExp构造函数与使用正则表达式字面量创建正则表达式注意点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"\?"</span>;  </div><div class="line">alert(str);<span class="comment">//只会输出?  </span></div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/\?/</span>;<span class="comment">//将匹配?  </span></div><div class="line">alert(re.test(str));<span class="comment">//true  </span></div><div class="line">re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\?"</span>);<span class="comment">//出错,因为这相当于re = /\?/  </span></div><div class="line">re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\?"</span>);<span class="comment">//正确，将匹配？  </span></div><div class="line">alert(re.test(str));<span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>既然双重转义这么不友好，所以还是用正则表达式字面量的声明方式 </p>
+<p>字符    描述<br>\n      换行符<br>\r      回车符<br>\t      制表符<br>\f      换页符（Tab）<br>\cX     与X对应的控制字符<br>\b      退格符(BackSpace)<br>\v      垂直制表符<br>\0      空字符(“”) </p>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><p>—〉简单类，反向类，范围类，组合类，预定义类<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/简单类  </div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/[abc123]/</span>;<span class="comment">//将匹配abc123这6个字符中一个  </span></div><div class="line"><span class="comment">//负向类  </span></div><div class="line">re = <span class="regexp">/[^abc]/</span>;<span class="comment">//将匹配除abc之外的一个字符  </span></div><div class="line"><span class="comment">//范围类  </span></div><div class="line">re = <span class="regexp">/[a-b]/</span>;<span class="comment">//将匹配小写a-b 26个字母  </span></div><div class="line">re = <span class="regexp">/[^0-9]/</span>;<span class="comment">//将匹配除0-9 10个字符之处的一个字符  </span></div><div class="line"><span class="comment">//组合类  </span></div><div class="line">re = <span class="regexp">/[a-b0-9A-Z_]/</span>;<span class="comment">//将匹配字母，数字和下划线</span></div></pre></td></tr></table></figure></p>
+<p>代码  等同于                  匹配<br>.     IE下[^\n]，其它[^\n\r]  匹配除换行符之外的任何一个字符<br>\d    [0-9]                   匹配数字<br>\D    [^0-9]                  匹配非数字字符<br>\s    [ \n\r\t\f\x0B]         匹配一个空白字符<br>\S    [^ \n\r\t\f\x0B]        匹配一个非空白字符<br>\w    [a-zA-Z0-9<em>]            匹配字母数字和下划线<br>\W    [^a-zA-Z0-9</em>]           匹配除字母数字下划线之外的字符 </p>
+<h3 id="量词-下表量词单个出现时皆是贪婪量词"><a href="#量词-下表量词单个出现时皆是贪婪量词" class="headerlink" title="量词(下表量词单个出现时皆是贪婪量词)"></a>量词(下表量词单个出现时皆是贪婪量词)</h3><p>代码  描述 </p>
+<ul>
+<li>匹配前面的子表达式零次或多次。例如，zo<em> 能匹配 “z” 以及 “zoo”。 </em> 等价于{0,}。 </li>
+</ul>
+<ul>
+<li>匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。<br>?     匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 中的”do” 。? 等价于 {0,1}。<br>{n}   n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。<br>{n,}  n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。<br>{n,m} m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。刘， “o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。 <h3 id="贪婪量词与惰性量词"><a href="#贪婪量词与惰性量词" class="headerlink" title="贪婪量词与惰性量词"></a>贪婪量词与惰性量词</h3>惰性量词仅仅在贪婪量词后面加个”?”而已,如”a+”是贪婪匹配的,”a+?”则是惰性的 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"abc"</span>;  </div><div class="line"><span class="keyword">var</span> re = <span class="regexp">/\w+/</span>;<span class="comment">//将匹配abc  </span></div><div class="line">re = <span class="regexp">/\w+?/</span>;<span class="comment">//将匹配a</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/[a-z]$/</span>;  </div><div class="line">    <span class="keyword">var</span> str = <span class="string">"ab\ncdef"</span>;  </div><div class="line">    alert(str.replace(re,<span class="string">"#"</span>));<span class="comment">//ab\ncde#  </span></div><div class="line">    re =<span class="regexp">/[a-z]$/m</span>;  </div><div class="line">    alert(str.replace(re,<span class="string">"#"</span>));<span class="comment">//a#\ncde#</span></div></pre></td></tr></table></figure>
+<h3 id="jQuery里用到的正则"><a href="#jQuery里用到的正则" class="headerlink" title="jQuery里用到的正则"></a>jQuery里用到的正则</h3><p>requickExpr=/^(?:\s<em>(&lt;[\w\W]+&gt;)[^&gt;]</em> |#([\w-]*))$/</p>
+<h2 id="正则表达式笔记"><a href="#正则表达式笔记" class="headerlink" title="正则表达式笔记"></a>正则表达式笔记</h2><p>[]：表示一个类，是一个泛指，只表示一个字符<br>^：取反   /[^abc123]/     如果放在外面代表开头<br>[0-9] [a-z] [A-Z] 写在一起/0-9a-zA-Z_/<br>.   匹配任何字符除了回车和换行===[^\r\n]<br>\d  [0-9]       \D    [^0-9]   \s  [空白符]<br>\S 非空白符   \w  [a-zA-Z_0-9]   单词字符，字母数字下划线<br>\W 非单词字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg=/[abcd]/;</div><div class="line">var str = &apos;haha &apos;;</div><div class="line">str.match(reg); 找到返回一个数组</div></pre></td></tr></table></figure></p>
+<p>^ 开头<br>$ 结尾<br> \b  单词边界<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var reg = /^h\dm/;</div></pre></td></tr></table></figure></p>
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><p>? 至多一次<br>+至少一次<br>*任意<br>{n}出现n次<br>{n,m}n到m次<br> {n,}至少n次<br>{,m}至多出现m次</p>
+<h3 id="贪婪模式（默认多的匹配）和非贪婪模式-量词后加"><a href="#贪婪模式（默认多的匹配）和非贪婪模式-量词后加" class="headerlink" title="贪婪模式（默认多的匹配）和非贪婪模式(量词后加?)"></a>贪婪模式（默认多的匹配）和非贪婪模式(量词后加?)</h3><h3 id="分组-匹配括号里面的整体"><a href="#分组-匹配括号里面的整体" class="headerlink" title="分组  ()匹配括号里面的整体"></a>分组  ()匹配括号里面的整体</h3><h3 id="前瞻"><a href="#前瞻" class="headerlink" title="前瞻"></a>前瞻</h3><p>exp1(?=exp2)         匹配后面是exp2的exp1<br>exp1(?!exp2)       匹配后面不是exp2的exp1</p>
+<h3 id="reg-test-‘字符串’"><a href="#reg-test-‘字符串’" class="headerlink" title="reg.test(‘字符串’)"></a>reg.test(‘字符串’)</h3><p>返回的是布尔值</p>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var str = a1b2c3;</div><div class="line">var reg = /\d/g;</div><div class="line">var result = reg.exec(str);</div><div class="line">//每执行一次      匹配一次返回一个数组    第一次1 第二次2 第三次3      一共返回三个数组</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/09/正则表达式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -904,77 +1004,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/17/hello-world/" class="archive-article-date">
-  	<time datetime="2017-02-17T07:45:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/17/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
