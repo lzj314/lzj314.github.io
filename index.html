@@ -176,13 +176,17 @@
       
         <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>Asynchronous JavaScript+XML<br>核心技术：XMLHttpRequest对象  XHR<br>ajax的核心是通过XmlHttpRequest获取非本页内容，<br>而jsonp的核心则是动态添加<script>标签来调用服务器提供的js脚本<br>1.Ajax主要的功能是实现了浏览器端 异步 访问服务器：通过浏览器的XMLHttpRequest对象发出小部分数据，与服务端进行交互，服务端返回小部分数据，然后更新客户端的部分页面。<br>2.json是Ajax发送小部分数据的一种轻量级数据格式，可以简单易懂的给服务器或者浏览器交互数据，包括jason对象，jason数组对象。<br>3.跨域的原理是：协议://子域名.主域名:端口号/服务端地址，除了服务端地址的改变叫做重定向以外，其他几个可变更的参数中任意一个的改变就叫做跨域。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">creatXHR</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">arguments</span>.callee.activeXString!=<span class="string">'string'</span>)&#123;</div><div class="line">		<span class="keyword">var</span> versions=[<span class="string">"MSXML2."</span>]</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><p><img src="http://i4.buimg.com/588926/35ff545899f4a9cb.png" alt=""></p>
-<h3 id="http请求的四个部分"><a href="#http请求的四个部分" class="headerlink" title="http请求的四个部分"></a>http请求的四个部分</h3><p><img src="http://i1.piimg.com/588926/6be9c2ecac2212b7.png" alt=""></p>
-<h3 id="XHR的用法"><a href="#XHR的用法" class="headerlink" title="XHR的用法"></a>XHR的用法</h3><p>第一个方法 open( ‘发送的请求类型get/post’,’请求的url’，’表示是否异步发送请求的布尔值’ )；<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(&quot;get&quot;,&quot;example.php&quot;,false);</div></pre></td></tr></table></figure></p>
+<h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><p>一个完整的HTTP请求过程包含7个步骤：<br>1.建立TCP连接；<br>2.Web浏览器向Web服务器发送请求命令；<br>3.Web浏览器发送请求头信息；<br>4.Web服务器应答；<br>5.Web服务器发送应答头信息；<br>6.Web服务器向浏览器发送数据；<br>7.Web服务器关闭TCP链接。</p>
+<h3 id="http请求的四个部分"><a href="#http请求的四个部分" class="headerlink" title="http请求的四个部分"></a>http请求的四个部分</h3><p>1.http请求的方法或动作，比如GET还是POST请求；<br>2.正在请求的URL，请求的地址；<br>3.请求头，包含一些客户端环境信息，身份验证信息等；<br>4.请求体，也就是请求正文，可以包含客户提交查询的字符串信息，表单信息等</p>
+<h3 id="XHR的用法"><a href="#XHR的用法" class="headerlink" title="XHR的用法"></a>XHR的用法</h3><p>第一个方法 open( ‘发送的请求类型get/post’,’请求的url’，’表示是否异步发送请求的布尔值’ )；<br>例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"get"</span>,<span class="string">"example.php"</span>,<span class="literal">false</span>);</div></pre></td></tr></table></figure></p>
 <p>注：url相对于执行代码的当前页面；调用open()方法不会真正发送请求；而是启动一个请求备发送。<br>send(作为请求主体发送的数据)方法发送特定请求：send(null);<br>如果不需要通过请求主体发送数据，则必须传入null。<br>请求是同步的；js代码需等待服务器响应再执行，<br>收到响应后 数据自动填充XHR对象的属性：<br>responseText: 响应主体返回的文本<br>responseXML: 如果响应的内容类型为’text/xml’或’application/xml’保存包含相应数据的XML DOM文档<br>status: 响应的http状态<br>statusText: http状态的说明<br>大部分发异步请求：检测XHR的readyState属性：表示请求响应过程的当前活动阶段。<br>0未初始化：没有调用open()事件<br>1启动：调用open()方法已经准备好发送请求了<br>2发送：调用send方法，但尚未收到响应。<br>3接收：接收到部分响应的数据<br>4完成：响应数据全部接收，浏览器可以使用了。<br>readyState属性值每改变一次就会触发一次readystatechange事件；用来检测每次变化后的readtState的值。夸浏览器兼容：在调用open之前指定onreadystatechange事件处理程序。</p>
 <blockquote>
 <p>必须在open方法之前指定onreadtstatechange事件处理程序</p>
-<h3 id="HTTP头部信息"><a href="#HTTP头部信息" class="headerlink" title="HTTP头部信息"></a>HTTP头部信息</h3><p>请求头和响应头<br>setRequestHeader(“头部字段的名称”,”头部字段的值”)自定义请求头部信息。<br>setRequestHeader须在open()方法后send()方法前调用。</p>
+</blockquote>
+<h3 id="HTTP头部信息"><a href="#HTTP头部信息" class="headerlink" title="HTTP头部信息"></a>HTTP头部信息</h3><p>请求头和响应头<br>setRequestHeader(“头部字段的名称”,”头部字段的值”)自定义请求头部信息。</p>
+<blockquote>
+<p>setRequestHeader须在open()方法后send()方法前调用。</p>
+</blockquote>
 <h3 id="IE10以下实现xhr2级跨域的方法"><a href="#IE10以下实现xhr2级跨域的方法" class="headerlink" title="IE10以下实现xhr2级跨域的方法"></a>IE10以下实现xhr2级跨域的方法</h3><p>配合XHR2的IE10以下跨域：<br>在代码中js加上一句<br>jQuery.support.cors =true;或者$.support.cors =true;<br>然后：设置IE浏览器-&gt;Internet选项-&gt;安全-&gt;自定义级别-&gt;其他选项下面的-&gt;通过源数据：选择“启用”或者“提示”</p>
 <h3 id="解决缓存"><a href="#解决缓存" class="headerlink" title="解决缓存"></a>解决缓存</h3><p>缓存:浏览器对同一个地址，只会访问一次；<br>解决：随机因子<br>1.添加随机数<br>2.添加时间戳。</p>
 <h3 id="js获取非行间样式的方法"><a href="#js获取非行间样式的方法" class="headerlink" title="js获取非行间样式的方法"></a>js获取非行间样式的方法</h3><p>obj.currentStyle[attr]   //IE<br>getComputedStyle(obj,false)[attr]    //火狐谷歌等</p>
@@ -191,7 +195,6 @@
 <h3 id="互联网的精神：分享-收藏-为啥用get"><a href="#互联网的精神：分享-收藏-为啥用get" class="headerlink" title="互联网的精神：分享 / 收藏 为啥用get"></a>互联网的精神：分享 / 收藏 为啥用get</h3><p>异步：每个线程都会执行一个任务，大家一起执行<br>同步：当前任务未完成，下个任务不会执行。</p>
 <h3 id="表单三要素"><a href="#表单三要素" class="headerlink" title="表单三要素"></a>表单三要素</h3><p>action<br>name<br>value</p>
 <h3 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h3><p>0 对象创建完成<br>1 链接已经完成<br>2 数据发送完成<br>3 数据已经返回  响应头 报文头<br>4 数据返回完毕  响应体 报文体</p>
-</blockquote>
 <p>1xx   服务接收请求正在处理<br>2xx   服务器处理完成 正确响应<br>3xx   重定向：重新定位方向<br>4xx   错误      –前端错误<br>5xx   错误      —服务错误 后台错误</p>
 <p>自定义请求头(post)<br>xhr.setRequestHeader(“Content-Type”, “application/x-www-form-urlencoded”);</p>
 <h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>跟踪会话技术：客户端会保留一小部分服务器上的数据<br>F12下Application 里的cookies<br>一次只能添加一次数据而且不会覆盖  ；+空格<br>cookie特性：<br>1 非常小  4K<br>2 不能跨域<br>3 不能跨浏览器<br>4 必须运行在服务器环境下</p>
