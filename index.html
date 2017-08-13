@@ -154,6 +154,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-几种排序算法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/几种排序算法总结/">几种排序算法总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/28/几种排序算法总结/" class="archive-article-date">
+  	<time datetime="2017-05-28T05:14:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>冒泡排序是最简单的一种排序之一，其精髓在于双重for循环，内循环每次比较相邻两个元素的大小，每次内循环结束，都会确定一个最大或最小的元素位置正确，外循环。可以分为四种排序顺序。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">14</span>,<span class="number">8</span>];</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="comment">//内外循环都是正序</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len=arr.length;i &lt; len;i++)&#123;</div><div class="line">        <span class="comment">//应该是确定位置的元素个数</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j &lt; arr.length-i<span class="number">-1</span>;j++)&#123;</div><div class="line">            <span class="comment">//从头开始比较，除去已经确定位置的元素</span></div><div class="line">            <span class="keyword">if</span>(arr[j+<span class="number">1</span>]&lt;arr[j])&#123;</div><div class="line">                <span class="keyword">var</span> temp;</div><div class="line">                temp = arr[j];</div><div class="line">                arr[j] = arr[j+<span class="number">1</span>];</div><div class="line">                arr[j+<span class="number">1</span>] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(bubbleSort(arr));</div></pre></td></tr></table></figure></p>
+<p>由于冒泡排序只在相邻元素大小不符合要求时才调换他们的位置, 它并不改变相同元素之间的相对顺序, 因此它是稳定的排序算法</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>基本原理，找到一个基准点，分割数组，把小于基准值的放在左边数组，大于基准值的放在右边数组，采用递归直到把数组分割成一个元素为止。<br>之后再将基准点，左数组和右数组进行拼接得到排序后的数组。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">14</span>,<span class="number">8</span>];</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(arr.length&lt;=<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> arr;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> leftArr = [];</div><div class="line">    <span class="keyword">var</span> rightArr = [];</div><div class="line">    <span class="keyword">var</span> index = <span class="built_in">Math</span>.floor(arr.length/<span class="number">2</span>);<span class="comment">//取一个中间基准点，可以随便取</span></div><div class="line">    <span class="keyword">var</span> standard = arr[index];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,len=arr.length;i&lt;len;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(arr[i] &lt; standard)&#123;</div><div class="line">            leftArr.push(arr[i]);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(arr[i] &gt; standard)&#123;</div><div class="line">            rightArr.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//拼接数组</span></div><div class="line">    <span class="keyword">return</span> quickSort(leftArr).concat([standard],quickSort(rightArr));</div><div class="line">&#125;</div><div class="line">quickSort(arr);</div></pre></td></tr></table></figure></p>
+<p>同选择排序相似, 快速排序每次交换的元素都有可能不是相邻的, 因此它有可能打破原来值为相同的元素之间的顺序. 因此, 快速排序并不稳定.</p>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>选择排序的原理是每次取一个位置的值为最大值或最小值，与所有元素比较。每次确定一个最大或最小值，放在数组的最左边或最右边。<br>选择排序每次交换的元素都有可能不是相邻的, 因此它有可能打破原来值为相同的元素之间的顺序. 比如数组[2,2,1,3], 正向排序时, 第一个数字2将与数字1交换, 那么两个数字2之间的顺序将和原来的顺序不一致, 虽然它们的值相同, 但它们相对的顺序却发生了变化. 我们将这种现象称作 不稳定性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sorrt</span>(<span class="params">ary</span>) </span>&#123;</div><div class="line">    length = ary.length;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</div><div class="line">        _min = ary[i]</div><div class="line">        k = i</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; length; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (_min &gt; ary[j]) &#123;</div><div class="line">                _min = ary[j]</div><div class="line">                k = j</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        ary[k] = ary[i]</div><div class="line">        ary[i] = _min</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ary;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/28/几种排序算法总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Ajax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -896,113 +963,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/03/12/编码规范/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js学习总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/18/js学习总结/">javascript基础知识</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/18/js学习总结/" class="archive-article-date">
-  	<time datetime="2017-02-17T16:29:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a = 10;</div></pre></td></tr></table></figure>
-<p> var a 变量的声明;a=10变量的赋值（初始化）;<br>命名规范：只能以数字，字符下划线及$符号组成；不能以数字开头，采用驼峰命名法。</p>
-<h4 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h4><p>分为数值类型；字符串类型；布尔类型；对象类型（包括null）；未定义(undefined)。</p>
-<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><p> 1.算术运算符 +，-，*，/，% （优先级先乘除取余；后加减）<br> 2.关系运算符 &gt;，&lt;，==，!=等   注：不能连续使用；<br>==只比较内容，===内容和类型都比较<br> 3.逻辑运算符 &amp;&amp;，||，！ 与或非<br>&amp;&amp; : 两边都为true结果才为true；<br>|| ： 只要有true结果就是true；<br> 4.+=，-=</p>
-<h4 id="其他类型转换布尔类型"><a href="#其他类型转换布尔类型" class="headerlink" title="其他类型转换布尔类型"></a>其他类型转换布尔类型</h4><p>String：任何非空字符串为true; 空字符串为false;<br>Number : 非0即true; 0为false;<br>object：任何对象为true; null为false;<br>Undefined：undefined为false;</p>
-<h4 id="数值参与逻辑运算"><a href="#数值参与逻辑运算" class="headerlink" title="数值参与逻辑运算"></a>数值参与逻辑运算</h4><p>&amp;&amp;都为真，结果取后面的值；|| 一个为真取真，都为真取前面的。<br>字符和数值同上。</p>
-<h4 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h4><p>算术运算符 &gt; 关系运算符 &gt; 逻辑运算符 &gt; 赋值运算符<br>注：逻辑运算符中&amp;&amp;优先级大于||,单目运算符大于双目运算符。</p>
-<h4 id="js语句的认识"><a href="#js语句的认识" class="headerlink" title="js语句的认识"></a>js语句的认识</h4><p>if语句：if(判断条件){如果条件成立执行括号中的代码}else{如果条件不成立，执行这里面的代码}；</p>
-<blockquote>
-<p>注：if语句可以嵌套。</p>
-</blockquote>
-<p>多重if语句：if(判断条件1){如果判断条件1成立就执行代码}else if(判断条件二){如果判断条件2成立就执行代码}else{执行这里的代码}…；</p>
-<blockquote>
-<p>注：多重if语句如果其中有条件成立那么程序就会终端执行</p>
-</blockquote>
-<p>switch语句：switch(变量或者值){case ‘值1’：如果符合值1执行代码 break; case ‘值二’：如果值二满足条件就执行代码；break ； default:如果都不满足就执行代码}</p>
-<p>循环语句：for(初始化条件；终止条件；变化值）{每次循环执行的代码}</p>
-<p>while语句：while(判断条件){如果条件成立就执行这里的代码}</p>
-<blockquote>
-<p>注：break和continue的区别<br>break中断该循环；continue中断本次循环继续下次循环。</p>
-</blockquote>
-<h4 id="的认识"><a href="#的认识" class="headerlink" title="++的认识"></a>++的认识</h4><p>a++：先执行代码执行结束后a+1；<br>++a：执行代码前a就+1；</p>
-<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>函数：就是一堆代码的集合用来说明某一个功能；<br>函数使用 1.定义函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//函数声明</div><div class="line"> function sum() &#123;</div><div class="line">        alert(&apos;我是一个sum函数&apos;);</div><div class="line">    &#125;</div><div class="line">//函数表达式</div><div class="line"> var fn=function()&#123;</div><div class="line">	 alert(&apos;我是一个sum函数&apos;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>2.调用函数：<br>sum();</p>
-<h4 id="函数的参数和返回值"><a href="#函数的参数和返回值" class="headerlink" title="函数的参数和返回值"></a>函数的参数和返回值</h4><p>函数的参数：根据实际需求可能在函数中使用的变量<br>函数参数类型：形式参数简称形参：在函数定义的时候放在小括号中的变量就是形式参数<br>实际参数：简称实参：就是在函数调用的时候传入的实际的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function sum(a,b) &#123;//a，b是形式参数，可以是任何值</div><div class="line">        alert(a + b);</div><div class="line">	return a+b;</div><div class="line">    &#125;</div><div class="line">sum(1,2);</div></pre></td></tr></table></figure>
-<p>使用return可以把函数的值返回，如果没有return值默认是undefined;在函数中如果使用了return,会直接结束函数，rerun后面的代码都不会执行。</p>
-<blockquote>
-<p>注：函数实参可以和形参不一样，而且可以返回对应的结果，如果实参大于形参，会把对应的多出的参数去掉，显示最终的结果。</p>
-<p>如果实参的个数小于形参的个数，会根据对应的编译器的计算方式来计算对应的值</p>
-</blockquote>
-<h4 id="全局变量和局部变量"><a href="#全局变量和局部变量" class="headerlink" title="全局变量和局部变量"></a>全局变量和局部变量</h4><p>全局变量：定义在函数外面的变量就是全局变量<br>局部变量：定义在函数内部的变量就是局部变量<br>局部变量的作用域：就是只是在函数体的内部起作用<br>全局变量：在页面中都起作用<br>变量访问的原则：就近原则。<br>变量的声明提升：如果在函数中访问了一个在函数访问之后定义的变量，那么会把这个变量的声明提升到函数的最前面。</p>
-<h4 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h4><p>Math.pow(a,b);   求a的b次方<br>Math.round(a);    对a进行四舍五入<br>Math.parseInt();    取整  parseInt会只是截取整数部分，不管小数是什么，都不用管,而且可以截取数值字符，只是截取数值部分其余不管<br>Math.parseFloat();   取小数<br>Math.Number();    转化数字<br>js对于加号只有两边参与运算的都是数值才是加号，其余都是连字符。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js基础知识点</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/18/js学习总结/">展开全文 >></a>
         </p>
       
 
